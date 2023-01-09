@@ -7,19 +7,43 @@ public class ClickToMove : MonoBehaviour
     private Vector3 position;
     public float speed;
     public CharacterController controller;
+    public AnimationClip run;
+    public AnimationClip idle;
+    private Animation anim;
+    public LayerMask layerWithoutEnemy;
+    public static bool attack;
+
+    //public GameObject NPC;
+
 
     void Start()
     {
         position = transform.position;
+        anim = GetComponent<Animation>();
+        LayerMask NotMask = ~ layerWithoutEnemy;
+
+
     }
 
     void Update ()
     {
-       if (Input.GetMouseButton(0))
+        if (!attack)
         {
-            locatePosition();
-            moveToPosition();
+            if (Input.GetMouseButton(0))
+            {
+                locatePosition();
+                moveToPosition();
+            }
+            else
+            {
+                anim.CrossFade(idle.name);
+            }
         }
+        else
+        {
+
+        }
+       
     }
 
     void locatePosition()
@@ -35,12 +59,17 @@ public class ClickToMove : MonoBehaviour
     }
 
     void moveToPosition() {
-        if (Vector3.Distance(transform.position, position) > 1) { 
+        if (Vector3.Distance(transform.position, position) > 0.5) { 
             Quaternion newRotation = Quaternion.LookRotation(position - transform.position); // высчитали новый угол
             newRotation.x = 0f;
             newRotation.z = 0f;
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 10); //transform.rotation - текущий поворт.
+            //поворачиваем игрока
             controller.SimpleMove(transform.forward * speed);
-    }
+
+            //anim.CrossFade(run.name);
+            anim.CrossFade("run");
+        }
+        
     }
 }

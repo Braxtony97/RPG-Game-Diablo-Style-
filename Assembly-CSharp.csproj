@@ -56,7 +56,13 @@
     <Analyzer Include="C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\Extensions\Microsoft\Visual Studio Tools for Unity\Analyzers\Microsoft.Unity.Analyzers.dll" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\ClickToMove.cs" />
+    <Compile Include="Assets\Scripts\Fighter.cs" />
+    <Compile Include="Assets\Scripts\CameraBehaviour.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Assets\SkeletonData\animations.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">

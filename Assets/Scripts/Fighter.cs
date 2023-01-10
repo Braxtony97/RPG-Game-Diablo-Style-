@@ -18,11 +18,12 @@ public class Fighter : MonoBehaviour
         if (Input.GetKey(KeyCode.Space))
         {
             anim.Play("attack");
+            transform.LookAt(opponent.transform.position);
             ClickToMove.attack = true;
         }
-        //else (!anim.IsPlaying("attack")){
-            //ClickToMove.attack = false;
-        //}
+        if (!anim.IsPlaying("attack")){
+            ClickToMove.attack = false;
+        }
     }
 
 }

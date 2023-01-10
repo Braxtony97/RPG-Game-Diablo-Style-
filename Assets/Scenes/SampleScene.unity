@@ -833,25 +833,12 @@ MonoBehaviour:
   layerWithoutEnemy:
     serializedVersion: 2
     m_Bits: 0
+  cold: {fileID: 0}
 --- !u!4 &1864817213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400016, guid: a2cb09cf998faef4fb7887e15c3608c1, type: 3}
   m_PrefabInstance: {fileID: 376014146}
   m_PrefabAsset: {fileID: 0}
---- !u!136 &1864817215
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1864817207}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  m_Radius: 0.5
-  m_Height: 1
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1864817217
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -864,4 +851,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3bac0211c93ec7458e5e538fd8b6a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  opponent: {fileID: 0}
+  opponent: {fileID: 1213957850}

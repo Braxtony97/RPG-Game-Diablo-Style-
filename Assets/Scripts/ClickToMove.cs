@@ -12,6 +12,7 @@ public class ClickToMove : MonoBehaviour
     private Animation anim;
     public LayerMask layerWithoutEnemy;
     public static bool attack;
+    public Collider cold;
 
     //public GameObject NPC;
 
@@ -21,12 +22,14 @@ public class ClickToMove : MonoBehaviour
         position = transform.position;
         anim = GetComponent<Animation>();
         LayerMask NotMask = ~ layerWithoutEnemy;
+        cold = GetComponent<Collider>();
 
 
     }
 
     void Update ()
     {
+        Debug.Log(attack);
         if (!attack)
         {
             if (Input.GetMouseButton(0))
@@ -53,8 +56,10 @@ public class ClickToMove : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1000))
         {
+            if (hit.collider.tag != "Player")  
+                    { 
             position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
-
+                    }
         }
     }
 

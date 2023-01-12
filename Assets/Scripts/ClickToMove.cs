@@ -29,7 +29,7 @@ public class ClickToMove : MonoBehaviour
 
     void Update ()
     {
-        Debug.Log(attack);
+        //Debug.Log(attack);
         if (!attack)
         {
             if (Input.GetMouseButton(0))

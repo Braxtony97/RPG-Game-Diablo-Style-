@@ -573,6 +573,10 @@ PrefabInstance:
       propertyPath: m_Animations.Array.data[1]
       value: 
       objectReference: {fileID: -5252816984213320552, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
+    - target: {fileID: 11100004, guid: 502c290bbb4b39d4f927c9e96a4ba993, type: 3}
+      propertyPath: m_Animations.Array.data[2]
+      value: 
+      objectReference: {fileID: -5455075036266976943, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 502c290bbb4b39d4f927c9e96a4ba993, type: 3}
 --- !u!1 &963194225
@@ -773,6 +777,7 @@ MonoBehaviour:
   speed: 4
   controller: {fileID: 1213957857}
   range: 6
+  health: 100
 --- !u!143 &1213957857
 CharacterController:
   m_ObjectHideFlags: 0
@@ -852,3 +857,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   opponent: {fileID: 1213957850}
+  damage: 30
+  impactTime: 0.35

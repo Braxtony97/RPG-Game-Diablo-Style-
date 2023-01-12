@@ -11,6 +11,7 @@ public class EnemyBehaviour : MonoBehaviour
     public CharacterController controller;
     public float range;
     private Animation anim;
+    public int health = 100;
 
     void Start()
     {
@@ -27,6 +28,16 @@ public class EnemyBehaviour : MonoBehaviour
         else
         {
             anim.CrossFade("idle");
+        }
+        Debug.Log(health);
+    }
+
+    public void GetHit(int damage)
+    {
+        health = health - damage;
+        if (health < 0)
+        {
+            Destroy(gameObject);
         }
     }
 

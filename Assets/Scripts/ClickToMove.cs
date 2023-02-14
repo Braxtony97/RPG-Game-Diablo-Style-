@@ -56,7 +56,7 @@ public class ClickToMove : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            if (hit.collider.tag != "Player")  
+            if (hit.collider.tag != "Player" && hit.collider.tag != "Enemy")  
                     { 
             position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                     }

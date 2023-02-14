@@ -219,6 +219,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: -6239216113759591374, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
     - target: {fileID: 11100006, guid: a2cb09cf998faef4fb7887e15c3608c1, type: 3}
+      propertyPath: m_Animations.Array.data[3]
+      value: 
+      objectReference: {fileID: -5455075036266976943, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
+    - target: {fileID: 11100006, guid: a2cb09cf998faef4fb7887e15c3608c1, type: 3}
       propertyPath: m_Animations.Array.data[7]
       value: 
       objectReference: {fileID: -5252816984213320552, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
@@ -577,6 +581,10 @@ PrefabInstance:
       propertyPath: m_Animations.Array.data[2]
       value: 
       objectReference: {fileID: -5455075036266976943, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
+    - target: {fileID: 11100004, guid: 502c290bbb4b39d4f927c9e96a4ba993, type: 3}
+      propertyPath: m_Animations.Array.data[3]
+      value: 
+      objectReference: {fileID: -6239216113759591374, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 502c290bbb4b39d4f927c9e96a4ba993, type: 3}
 --- !u!1 &963194225
@@ -776,8 +784,10 @@ MonoBehaviour:
   player: {fileID: 1864817213}
   speed: 4
   controller: {fileID: 1213957857}
-  range: 6
+  range: 1.5
   health: 100
+  impactTime: 0.33
+  damage: 40
 --- !u!143 &1213957857
 CharacterController:
   m_ObjectHideFlags: 0
@@ -859,3 +869,5 @@ MonoBehaviour:
   opponent: {fileID: 1213957850}
   damage: 30
   impactTime: 0.35
+  range: 2
+  health: 200

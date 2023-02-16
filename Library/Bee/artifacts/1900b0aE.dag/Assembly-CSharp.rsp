@@ -357,6 +357,7 @@
 "Assets/Scripts/CameraBehaviour.cs"
 "Assets/Scripts/ClickToMove.cs"
 "Assets/Scripts/EnemyBehaviour.cs"
+"Assets/Scripts/EnemyHealth.cs"
 "Assets/Scripts/Fighter.cs"
 -langversion:9.0
 

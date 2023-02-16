@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\ClickToMove.cs" />
+    <Compile Include="Assets\Scripts\EnemyHealth.cs" />
     <Compile Include="Assets\Scripts\Fighter.cs" />
     <Compile Include="Assets\Scripts\CameraBehaviour.cs" />
   </ItemGroup>

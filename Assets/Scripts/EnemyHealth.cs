@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting.ReorderableList;
 using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour
@@ -17,22 +18,43 @@ public class EnemyHealth : MonoBehaviour
 
     public float wigthBar;
     public float heightBar;
+
+    public Fighter player;
+    //в inspector прикрепляем игрока
+
+    public EnemyBehaviour target;
+    public float healthPercentage;
+    //показывает текущее значение здоровья 
     void Start()
-    {
+    { 
+        
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (player.opponent != null)
+        {
+            target = player.opponent.GetComponent<EnemyBehaviour>();
+            healthPercentage = (float) target.health / target.maxHealth;
+            // покажет процент здоровья ( 50 / 100 = 50%)
+        }
+        else
+        {
+            target = null;
+            healthPercentage = 0;
+        }
     }
 
     private void OnGUI()
     {
-        drawFrame();
-        drawBar();
-    } 
+        if (target != null && player.countDown > 0)
+        {
+            drawFrame();
+            drawBar();
+        } 
+    }
 
     void drawFrame()
     {
@@ -48,7 +70,7 @@ public class EnemyHealth : MonoBehaviour
         //у Bar делаем ту же позицию, что и у Frame (border)
         barPosition.x = borderPosition.x + borderPosition.width * horizontalDistance;
         barPosition.y = borderPosition.y + borderPosition.height * verticalDistance;
-        barPosition.width = borderPosition.width * wigthBar;
+        barPosition.width = borderPosition.width * wigthBar * healthPercentage;
         barPosition.height = borderPosition.height * heightBar;
         GUI.DrawTexture(barPosition, bar);
 

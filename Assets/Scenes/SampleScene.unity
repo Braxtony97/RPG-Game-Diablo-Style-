@@ -789,8 +789,9 @@ MonoBehaviour:
   speed: 4
   controller: {fileID: 1213957857}
   range: 1.5
-  health: 100
   impactTime: 0.33
+  maxHealth: 200
+  health: 0
   damage: 40
 --- !u!143 &1213957857
 CharacterController:
@@ -870,11 +871,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3bac0211c93ec7458e5e538fd8b6a44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  opponent: {fileID: 1213957850}
+  opponent: {fileID: 0}
   damage: 30
   impactTime: 0.35
   range: 2
-  health: 200
+  health: 2000
+  combatEscapeTime: 7
+  countDown: 0
 --- !u!1 &2058627878
 GameObject:
   m_ObjectHideFlags: 0
@@ -908,7 +911,7 @@ MonoBehaviour:
   borderPosition:
     serializedVersion: 2
     x: 0
-    y: 600
+    y: 28
     width: 500
     height: 45
   bar: {fileID: 2800000, guid: 262cabc97a1907a4eb251bce4b835004, type: 3}
@@ -922,6 +925,9 @@ MonoBehaviour:
   verticalDistance: 0.27
   wigthBar: 0.795
   heightBar: 0.44
+  player: {fileID: 1864817217}
+  target: {fileID: 0}
+  healthPercentage: 0
 --- !u!4 &2058627880
 Transform:
   m_ObjectHideFlags: 0

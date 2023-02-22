@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEditor.VersionControl;
 using UnityEngine;
 
@@ -11,9 +12,11 @@ public class EnemyBehaviour : MonoBehaviour
     public CharacterController controller;
     public float range;
     private Animation anim;
-    public int health = 100;
 
     public double impactTime = 0.33;
+
+    public int maxHealth;
+    public int health;
     bool impacted;
     private Fighter opponent;
     public int damage;
@@ -21,6 +24,7 @@ public class EnemyBehaviour : MonoBehaviour
 
     void Start()
     {
+        health = maxHealth;
         anim = GetComponent<Animation>();
         opponent = player.GetComponent<Fighter>();
     }
@@ -60,10 +64,10 @@ public class EnemyBehaviour : MonoBehaviour
     public void GetHit(int damage)
     {
         health = health - damage;
-        /*if (health < 0)
+        if (health < 0)
         {
-            Destroy(gameObject);
-        }*/
+            health = 0;
+        }
     }
 
     void attack()

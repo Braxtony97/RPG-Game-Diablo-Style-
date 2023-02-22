@@ -17,9 +17,16 @@ public class Fighter : MonoBehaviour
 
     bool starterd;
     bool ended;
+
+    public float combatEscapeTime;
+
+    public float countDown; 
+    //когда ударим врага, пойдет отсчет 
+    //когда дойдет до 0, выйдем из комбат
     void Start()
     {
         anim = GetComponent<Animation>();
+        
     }
 
     // Update is called once per frame
@@ -53,11 +60,23 @@ public class Fighter : MonoBehaviour
             {
                 if (inRange())
                 {
-                    
+                    countDown = combatEscapeTime;
+                    CancelInvoke("combatEscapeCountDown");
+                    InvokeRepeating("combatEscapeCountDown", 0, 1);
                     opponent.GetComponent<EnemyBehaviour>().GetHit(damage);
                     impacted = true;
                 } 
             }
+        }
+    }
+
+    void combatEscapeCountDown()
+    {
+        countDown = countDown - 1;
+        if (countDown == 0)
+        {
+            CancelInvoke("combatEscapeCountDown");
+            //перестает вызывать метод 
         }
     }
 

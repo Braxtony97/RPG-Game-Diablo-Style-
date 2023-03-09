@@ -789,6 +789,7 @@ MonoBehaviour:
   speed: 4
   controller: {fileID: 1213957857}
   range: 1.5
+  levelSystem: {fileID: 0}
   impactTime: 0.33
   maxHealth: 200
   health: 0
@@ -854,6 +855,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   cold: {fileID: 0}
+  enemy: {fileID: 1213957854}
 --- !u!4 &1864817213 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400016, guid: a2cb09cf998faef4fb7887e15c3608c1, type: 3}
@@ -875,9 +877,45 @@ MonoBehaviour:
   damage: 30
   impactTime: 0.35
   range: 2
-  health: 2000
+  health: 0
+  inAction: 0
+  maxHealth: 2000
   combatEscapeTime: 7
   countDown: 0
+  specialAttack: 0
+--- !u!114 &1864817219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864817207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fa54362c67cbab48a402c94dc801b18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  level: 1
+  exp: 0
+  player: {fileID: 1864817217}
+--- !u!114 &1864817220
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1864817207}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 269961d379df48d42b8af5ceccf2f2e8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1864817217}
+  key: 49
+  damagePercentage: 2
+  stunTime: 10
+  inAction: 0
+  particleEffects: {fileID: 1129665304456096227, guid: c3883efb8dd63d342942e664fd452512, type: 3}
 --- !u!1 &2058627878
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,6 +10,7 @@ public class SpecialAttack : MonoBehaviour
     public double damagePercentage;
     public int stunTime;
     public bool inAction;
+    public GameObject particleEffects;
     void Start()
     {
         
@@ -18,15 +19,29 @@ public class SpecialAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(key) && !player.specialAttack)
+        if (Input.GetKeyDown(key) && !player.specialAttack)
+        /*если много раз нажимать 1 - то player будет начинать атаку снова
+        поэтому в условие добавляем !player.specialAttack */
         {
-            //this.GetComponent<Fighter>().resetAttackFunction();
             player.resetAttackFunction();
             player.specialAttack = true;
+            inAction = true;
             //не вызовется атака простая
 
         } 
+        if (inAction)
+        {
+            if (player.attackFunction(stunTime, damagePercentage, key, particleEffects))
+            {
+                //продолжаем
+            }
+            else
+            {
+                inAction = false;
+                //если player.attackFunction(stunTime, damagePercentage, key завершилась (в блоке завершения атаки) = false
+                //то и тут inAction = false (что бы не вызывалась специальная атака снова (пока сами не вызовем))
+            }
+        }
 
-        player.attackFunction(stunTime, damagePercentage, key);
     }
 }

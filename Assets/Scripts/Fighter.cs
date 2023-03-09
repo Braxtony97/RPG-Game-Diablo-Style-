@@ -15,57 +15,109 @@ public class Fighter : MonoBehaviour
     public float range;
     public int health;
 
+    public bool inAction;
+
     bool starterd;
     bool ended;
 
+    public int maxHealth;
+
     public float combatEscapeTime;
 
-    public float countDown; 
+    public float countDown;
     //когда ударим врага, пойдет отсчет 
     //когда дойдет до 0, выйдем из комбат
+
+    public bool specialAttack;
     void Start()
     {
+        health = maxHealth;
         anim = GetComponent<Animation>();
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(health + " Player"); 
-        
-        if (Input.GetKey(KeyCode.Space))
-        {
-            if (opponent != null)
+        if (Input.GetKey(KeyCode.Space) && !specialAttack)
             {
-                anim.Play("attack");
-                transform.LookAt(opponent.transform.position);
-                ClickToMove.attack = true; // при одиночном нажатии на space - не будет ударять (только если держать)
-                // Нажали space - произошел удар, при этом в классе ClickToMove мы остановились (начинает играть анимация idle) - ведь мы не нажимает ЛКМ
+                inAction = true;
+            }
+        if (inAction)
+        {
+            if (attackFunction(0, 1, KeyCode.Space, null))
+            {
+                //проигрывается attackFunction(0, 1, KeyCode.Space)
+                //когда он станет fasle - идем ниже
+            }
+            else
+            {
+                inAction = false;
             }
         }
-        if (anim["attack"].time > 0.9 * anim["attack"].length){
-            ClickToMove.attack = false; // для того, что бы после удара можно было управлять персонажем дальше
-            impacted = false;
-        }
         die();
-        impact();
+
     }
 
-    void impact()
+    public bool attackFunction(int stunSecond, double scaleDamage, KeyCode key, GameObject particleEffects)
+    {
+        if (Input.GetKey(key) && inRange())
+        {
+            anim.Play("attack");
+            ClickToMove.attack = true; // при одиночном нажатии на space - не будет ударять (только если держать)
+                                       // Нажали space - произошел удар, при этом в классе ClickToMove мы остановились (начинает играть анимация idle) - ведь мы не нажимает ЛКМ
+            if (opponent != null)
+            {
+                transform.LookAt(opponent.transform.position);
+            }
+        }
+        if (anim["attack"].time > 0.9 * anim["attack"].length)
+        {
+            ClickToMove.attack = false; // для того, что бы после удара можно было управлять персонажем дальше
+            impacted = false;
+            if (specialAttack)
+            {
+                specialAttack = false;
+            }
+            //если этого блока не будет, то после того, как нажмем 1 для оглушения, то 
+            //потом не сможем использовать простую атаку
+            return false; 
+            // Когда атака завершается - false, 
+        }
+        impact(stunSecond, scaleDamage, particleEffects);
+        //играется атака и вызывается метод impact
+        return true;
+        //вернет true, если мы в атакуем еще (inAction (specialAttack))
+    }
+
+    public void resetAttackFunction()
+    {
+        ClickToMove.attack = false;
+        impacted = false;
+        anim.Stop("attack");
+
+    }
+
+    void impact(int stunSecond, double scaleDamage, GameObject particleEffects)
     {
         if (opponent != null && anim.IsPlaying("attack") && !impacted)
         {
-            if ((anim["attack"].time > anim["attack"].length * impactTime) &&  (anim["attack"].time < anim["attack"].length * 0.9))
+            if ((anim["attack"].time > anim["attack"].length * impactTime) && (anim["attack"].time < anim["attack"].length * 0.9))
             {
                 if (inRange())
                 {
                     countDown = combatEscapeTime;
                     CancelInvoke("combatEscapeCountDown");
                     InvokeRepeating("combatEscapeCountDown", 0, 1);
-                    opponent.GetComponent<EnemyBehaviour>().GetHit(damage);
+                    opponent.GetComponent<EnemyBehaviour>().GetHit(damage * (int)scaleDamage);
+                    opponent.GetComponent<EnemyBehaviour>().getStun(stunSecond);
+                    //Instantiate(Resources.Load("attackOne"), opponent.transform.position, Quaternion.identity);
+                    if (particleEffects != null)
+                    {
+                        Instantiate(particleEffects, new Vector3(opponent.transform.position.x, opponent.transform.position.y * 2.5f, opponent.transform.position.z), Quaternion.identity);
+                    } 
                     impacted = true;
-                } 
+                }
             }
         }
     }
@@ -93,8 +145,8 @@ public class Fighter : MonoBehaviour
             health = 0;
         }
         //если не добавить блок с if, то здоровье будет уменьшаться дальше ( в минус)
-       
-    } 
+
+    }
     public bool isDead()
     {
         return (health <= 0);
@@ -107,9 +159,9 @@ public class Fighter : MonoBehaviour
             if (!starterd)
             {
                 anim.Play("die");
-                
+
                 starterd = true;
-            } 
+            }
             if (starterd && anim.IsPlaying("die"))
             {
                 Debug.Log("Dead");
@@ -118,4 +170,3 @@ public class Fighter : MonoBehaviour
         }
     }
 }
-

@@ -13,6 +13,7 @@ public class ClickToMove : MonoBehaviour
     public LayerMask layerWithoutEnemy;
     public static bool attack;
     public Collider cold;
+    public EnemyBehaviour enemy;
 
     //public GameObject NPC;
 
@@ -60,6 +61,10 @@ public class ClickToMove : MonoBehaviour
                     { 
             position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                     }
+            if (hit.collider.tag =="Enemy")
+            {
+                transform.LookAt(enemy.transform.position);
+            }
         }
     }
 

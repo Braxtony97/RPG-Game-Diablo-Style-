@@ -377,6 +377,7 @@
 "Assets/Scripts/Fighter.cs"
 "Assets/Scripts/LevelSystem.cs"
 "Assets/Scripts/SpecialAttack.cs"
+"Assets/Scripts/Strike.cs"
 -langversion:9.0
 
 /deterministic

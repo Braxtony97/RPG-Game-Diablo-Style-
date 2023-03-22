@@ -15,6 +15,9 @@ public class ClickToMove : MonoBehaviour
     public Collider cold;
     public EnemyBehaviour enemy;
 
+    public static Vector3 cursorPosition;
+    //содержит позицию курсора
+
     //public GameObject NPC;
 
 
@@ -30,6 +33,7 @@ public class ClickToMove : MonoBehaviour
 
     void Update ()
     {
+        locateCursor();
         //Debug.Log(attack);
         if (!attack)
         {
@@ -65,6 +69,17 @@ public class ClickToMove : MonoBehaviour
             {
                 transform.LookAt(enemy.transform.position);
             }
+        }
+    }
+
+    void locateCursor()
+    {
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+
+        if (Physics.Raycast(ray, out hit, 1000))
+        {
+            cursorPosition = hit.point;
         }
     }
 

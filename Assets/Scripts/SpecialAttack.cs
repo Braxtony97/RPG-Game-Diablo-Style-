@@ -11,6 +11,10 @@ public class SpecialAttack : MonoBehaviour
     public int stunTime;
     public bool inAction;
     public GameObject particleEffects;
+    public bool opponentBased;
+
+    public int projectile;
+
     void Start()
     {
         
@@ -31,7 +35,7 @@ public class SpecialAttack : MonoBehaviour
         } 
         if (inAction)
         {
-            if (player.attackFunction(stunTime, damagePercentage, key, particleEffects))
+            if (player.attackFunction(stunTime, damagePercentage, key, particleEffects, projectile, opponentBased))
             {
                 //продолжаем
             }

@@ -40,12 +40,12 @@ public class Fighter : MonoBehaviour
     void Update()
     {
         if (Input.GetKey(KeyCode.Space) && !specialAttack)
-            {
-                inAction = true;
-            }
+        {
+            inAction = true;
+        }
         if (inAction)
         {
-            if (attackFunction(0, 1, KeyCode.Space, null))
+            if (attackFunction(0, 1, KeyCode.Space, null, 0, true))
             {
                 //проигрывается attackFunction(0, 1, KeyCode.Space)
                 //когда он станет fasle - идем ниже
@@ -59,18 +59,36 @@ public class Fighter : MonoBehaviour
 
     }
 
-    public bool attackFunction(int stunSecond, double scaleDamage, KeyCode key, GameObject particleEffects)
+    public bool attackFunction(int stunSecond, double scaleDamage, KeyCode key, GameObject particleEffects, int projectile, bool opponentBased)
     {
-        if (Input.GetKey(key) && inRange())
+
         {
-            anim.Play("attack");
-            ClickToMove.attack = true; // при одиночном нажатии на space - не будет ударять (только если держать)
-                                       // Нажали space - произошел удар, при этом в классе ClickToMove мы остановились (начинает играть анимация idle) - ведь мы не нажимает ЛКМ
-            if (opponent != null)
+            if (opponentBased)
+            //если враг true, то  атакуем врага
             {
-                transform.LookAt(opponent.transform.position);
+                if (Input.GetKey(key) && inRange())
+                {
+                    anim.Play("attack");
+                    ClickToMove.attack = true;
+                    if (opponent != null)
+                    {
+                        transform.LookAt(opponent.transform.position);
+                    }
+                }
+            }
+            else
+            {
+                //если врага нет, то и условие inRange() не нужно
+                if (Input.GetKey(key))
+                {
+                    anim.Play("attack");
+                    ClickToMove.attack = true;
+
+                        transform.LookAt(ClickToMove.cursorPosition);
+                }
             }
         }
+
         if (anim["attack"].time > 0.9 * anim["attack"].length)
         {
             ClickToMove.attack = false; // для того, что бы после удара можно было управлять персонажем дальше
@@ -81,10 +99,10 @@ public class Fighter : MonoBehaviour
             }
             //если этого блока не будет, то после того, как нажмем 1 для оглушения, то 
             //потом не сможем использовать простую атаку
-            return false; 
+            return false;
             // Когда атака завершается - false, 
         }
-        impact(stunSecond, scaleDamage, particleEffects);
+        impact(stunSecond, scaleDamage, particleEffects, projectile, opponentBased);
         //играется атака и вызывается метод impact
         return true;
         //вернет true, если мы в атакуем еще (inAction (specialAttack))
@@ -98,19 +116,26 @@ public class Fighter : MonoBehaviour
 
     }
 
-    void impact(int stunSecond, double scaleDamage, GameObject particleEffects)
+    void impact(int stunSecond, double scaleDamage, GameObject particleEffects, int projectile, bool opponentBased)
     {
-        if (opponent != null && anim.IsPlaying("attack") && !impacted)
+        if ((!opponentBased || opponent != null) && anim.IsPlaying("attack") && !impacted)
         {
             if ((anim["attack"].time > anim["attack"].length * impactTime) && (anim["attack"].time < anim["attack"].length * 0.9))
             {
-                if (inRange())
                 {
                     countDown = combatEscapeTime;
                     CancelInvoke("combatEscapeCountDown");
                     InvokeRepeating("combatEscapeCountDown", 0, 1);
                     opponent.GetComponent<EnemyBehaviour>().GetHit(damage * (int)scaleDamage);
                     opponent.GetComponent<EnemyBehaviour>().getStun(stunSecond);
+                    Quaternion rot = transform.rotation;
+                    rot.x = 0;
+                    rot.z = 0;
+                    if (projectile > 0 )
+                    {
+                        //project projectiles
+                        Instantiate(Resources.Load("Projectile"), new Vector3(transform.position.x, transform.position.y * 2.5f, transform.position.z), rot);
+                    }
                     //Instantiate(Resources.Load("attackOne"), opponent.transform.position, Quaternion.identity);
                     if (particleEffects != null)
                     {

@@ -225,8 +225,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 0a110000
-      m_LastClickedID: 0
+      m_SelectedIDs: 6c5a0000
+      m_LastClickedID: 23148
       m_ExpandedIDs: 32fbffff
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -486,7 +486,7 @@ MonoBehaviour:
       floating: 0
       collapsed: 0
       displayed: 0
-      snapOffset: {x: 0, y: 0}
+      snapOffset: {x: 0, y: 25}
       snapOffsetDelta: {x: 0, y: 0}
       snapCorner: 0
       id: Scene View/Particles
@@ -502,9 +502,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 10.296199, y: 6.0808372, z: -7.2509537}
+    m_Target: {x: 12.473486, y: 1.0104655, z: 5.9015474}
     speed: 2
-    m_Value: {x: 10.296199, y: 6.0808372, z: -7.2509537}
+    m_Value: {x: 12.473486, y: 1.0104655, z: 5.9015474}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -551,9 +551,9 @@ MonoBehaviour:
     m_GridAxis: 1
     m_gridOpacity: 0.5
   m_Rotation:
-    m_Target: {x: 0.2602055, y: -0.036848914, z: 0.009774035, w: 0.9649047}
+    m_Target: {x: 0.03041742, y: -0.8333861, z: 0.04567494, w: 0.5501533}
     speed: 2
-    m_Value: {x: 0.2601793, y: -0.036845203, z: 0.00977305, w: 0.9648075}
+    m_Value: {x: 0.03041419, y: -0.8332976, z: 0.04567009, w: 0.5500949}
   m_Size:
     m_Target: 2.3274815
     speed: 2
@@ -676,22 +676,22 @@ MonoBehaviour:
     m_SkipHidden: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/Scripts
+    - Assets/Resources
     m_Globs: []
     m_OriginalText: 
   m_ViewMode: 1
   m_StartGridSize: 64
   m_LastFolders:
-  - Assets/Scripts
+  - Assets/Resources
   m_LastFoldersGridSize: -1
   m_LastProjectPath: A:\Unity Files\RPGGame(DiabloStyle)
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 0}
-    m_SelectedIDs: 505c0000
-    m_LastClickedID: 23632
-    m_ExpandedIDs: 00000000285c0000ffffff7f
+    scrollPos: {x: 0, y: 11}
+    m_SelectedIDs: 7c5d0000
+    m_LastClickedID: 23932
+    m_ExpandedIDs: 00000000505d0000525d0000545d0000565d0000585d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -707,7 +707,7 @@ MonoBehaviour:
       m_IsRenaming: 0
       m_OriginalEventType: 11
       m_IsRenamingFilename: 1
-      m_ClientGUIView: {fileID: 0}
+      m_ClientGUIView: {fileID: 10}
     m_SearchString: 
     m_CreateAssetUtility:
       m_EndAction: {fileID: 0}
@@ -719,7 +719,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000285c0000
+    m_ExpandedIDs: 00000000505d0000525d0000545d0000565d0000585d0000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -744,9 +744,9 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 0a110000
-    m_LastClickedInstanceID: 4362
-    m_HadKeyboardFocusLastEvent: 1
+    m_SelectedInstanceIDs: 6c5a0000
+    m_LastClickedInstanceID: 23148
+    m_HadKeyboardFocusLastEvent: 0
     m_ExpandedInstanceIDs: c62300000e640000a86500003a5e0000126000005c5c0000da8000005e5c0000565c000020690000
     m_RenameOverlay:
       m_UserAcceptedRename: 0

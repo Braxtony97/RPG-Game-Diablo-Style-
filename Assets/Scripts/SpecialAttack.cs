@@ -15,6 +15,8 @@ public class SpecialAttack : MonoBehaviour
 
     public int projectile;
 
+    public Texture2D picture;
+
     void Start()
     {
         

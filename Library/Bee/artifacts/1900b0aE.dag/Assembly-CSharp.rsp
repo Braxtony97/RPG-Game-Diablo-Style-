@@ -370,14 +370,20 @@
 "Assets/JMO Assets/Cartoon FX (legacy)/Scripts/CFX_AutoRotate.cs"
 "Assets/JMO Assets/Cartoon FX (legacy)/Scripts/CFX_LightFlicker.cs"
 "Assets/JMO Assets/Cartoon FX (legacy)/Scripts/CFX_LightIntensityFade.cs"
+"Assets/Movement.cs"
+"Assets/Pool.cs"
+"Assets/PoolMember.cs"
+"Assets/Scripts/ActionBar.cs"
 "Assets/Scripts/CameraBehaviour.cs"
 "Assets/Scripts/ClickToMove.cs"
 "Assets/Scripts/EnemyBehaviour.cs"
 "Assets/Scripts/EnemyHealth.cs"
 "Assets/Scripts/Fighter.cs"
 "Assets/Scripts/LevelSystem.cs"
+"Assets/Scripts/SkillSlot.cs"
 "Assets/Scripts/SpecialAttack.cs"
 "Assets/Scripts/Strike.cs"
+"Assets/Shoot.cs"
 -langversion:9.0
 
 /deterministic

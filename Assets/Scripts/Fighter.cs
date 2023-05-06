@@ -159,7 +159,14 @@ public class Fighter : MonoBehaviour
 
     bool inRange()
     {
-        return Vector3.Distance(transform.position, opponent.transform.position) <= range;
+        if (opponent != null & Vector3.Distance(transform.position, opponent.transform.position) <= range)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
     }
 
     public void getHit(int damage)

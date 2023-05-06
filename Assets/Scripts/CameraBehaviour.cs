@@ -8,7 +8,7 @@ public class CameraBehaviour : MonoBehaviour
     public Vector3 camOffset;
     void Start()
     {
-        camOffset = transform.position - player.position;
+        //camOffset = transform.position - player.transform.position;
     }
 
     // Update is called once per frame
@@ -16,6 +16,6 @@ public class CameraBehaviour : MonoBehaviour
     {
         //transform.position = player.TransformPoint(camOffset);
         //transform.LookAt(player);
-        transform.position = camOffset + player.position;
+        transform.position = camOffset + player.transform.position;
     }
 }

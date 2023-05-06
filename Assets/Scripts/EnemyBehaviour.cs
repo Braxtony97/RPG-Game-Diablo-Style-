@@ -7,6 +7,11 @@ using UnityEngine;
 
 public class EnemyBehaviour : MonoBehaviour
 {
+    public static int assigner;
+    // у static такое св-во?
+    public int id;
+    //id врага
+    
     public Transform player;
     public float speed;
     public CharacterController controller;
@@ -33,6 +38,24 @@ public class EnemyBehaviour : MonoBehaviour
         anim = GetComponent<Animation>();
         opponent = player.GetComponent<Fighter>();
         levelSystem = player.GetComponent<LevelSystem>();
+        assignId();
+        int dataBaseHealth = DataBase.readEnemyHealth(id);
+        if (dataBaseHealth == -1)
+        {
+
+        }
+        else
+        {
+            health = DataBase.readEnemyHealth(id);
+        }
+
+    }
+
+    void assignId()
+    {
+        this.id = assigner;
+        assigner ++;
+        Debug.Log(assigner);
     }
 
     // Update is called once per frame
@@ -79,10 +102,13 @@ public class EnemyBehaviour : MonoBehaviour
     public void GetHit(int damage)
     {
         health = health - damage;
+
         if (health < 0)
         {
             health = 0;
         }
+
+        DataBase.saveEnemyHealth(id, health);
     }
 
     public void getStun(int seconds)

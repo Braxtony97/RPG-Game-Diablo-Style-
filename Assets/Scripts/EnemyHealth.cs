@@ -49,6 +49,7 @@ public class EnemyHealth : MonoBehaviour
 
     private void OnGUI()
     {
+
         if (target != null && player.countDown > 0)
         {
             drawFrame();

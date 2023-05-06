@@ -18,12 +18,14 @@ public class ClickToMove : MonoBehaviour
     public static Vector3 cursorPosition;
     //содержит позицию курсора
 
+    public static Vector3 currentPosition;
+
     //public GameObject NPC;
 
 
     void Start()
     {
-        position = transform.position;
+        transform.position = DataBase.readPlayerPosition();
         anim = GetComponent<Animation>();
         LayerMask NotMask = ~ layerWithoutEnemy;
         cold = GetComponent<Collider>();
@@ -51,7 +53,9 @@ public class ClickToMove : MonoBehaviour
         {
 
         }
-       
+        currentPosition = transform.position;
+        
+
     }
 
     void locatePosition()

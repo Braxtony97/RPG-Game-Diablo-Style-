@@ -16,7 +16,6 @@ public class SkillSlot
             
             skill.key = keyCode;
             key = keyCode;
-            Debug.Log("пекредали keyCode");
         }
     }
 }

@@ -3,11 +3,11 @@ using System.Collections;
 
 // Cartoon FX  - (c) 2015 Jean Moreno
 
-// Indefinitely rotates an object at a constant speed
+// Indefinitely rotates an object at a constant Speed
 
 public class CFX_AutoRotate : MonoBehaviour
 {
-	// Rotation speed & axis
+	// Rotation Speed & axis
 	public Vector3 rotation;
 	
 	// Rotation space

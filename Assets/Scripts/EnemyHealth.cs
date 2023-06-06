@@ -34,9 +34,9 @@ public class EnemyHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.opponent != null)
+        if (player.Opponent != null)
         {
-            target = player.opponent.GetComponent<EnemyBehaviour>();
+            target = player.Opponent.GetComponent<EnemyBehaviour>();
             healthPercentage = (float) target.health / target.maxHealth;
             // покажет процент здоровья ( 50 / 100 = 50%)
         }
@@ -50,7 +50,7 @@ public class EnemyHealth : MonoBehaviour
     private void OnGUI()
     {
 
-        if (target != null && player.countDown > 0)
+        if (target != null && player.CountDown > 0)
         {
             drawFrame();
             drawBar();

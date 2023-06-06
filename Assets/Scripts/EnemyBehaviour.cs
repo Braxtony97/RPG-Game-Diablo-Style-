@@ -55,7 +55,6 @@ public class EnemyBehaviour : MonoBehaviour
     {
         this.id = assigner;
         assigner ++;
-        Debug.Log(assigner);
     }
 
     // Update is called once per frame
@@ -72,17 +71,17 @@ public class EnemyBehaviour : MonoBehaviour
                 }
                 else
                 {
-                    //anim.CrossFade("idle");
-                    anim.Play("attack");
+                    //_animation.CrossFade("Idle");
+                    anim.Play("Attack");
                     attack();
-                    if (anim["attack"].time > anim["attack"].length * 0.9)
+                    if (anim["Attack"].time > anim["Attack"].length * 0.9)
                     //что бы атака вызывалась еще раз только после 90% продолжительности атаки
                     //но будет вызываться каждый кадр до 100% продолжительности
-                    //поэтому в самом методе attack() нужно прописать условие
+                    //поэтому в самом методе Attack() нужно прописать условие
                     //что наносить урон только от impactTime до 90%
                     {
                         impacted = false;
-                        //если (impacted = false;), то метод attack() 
+                        //если (impacted = false;), то метод Attack() 
                         //вызовется только 1 раз
                     }
                 }
@@ -133,17 +132,17 @@ public class EnemyBehaviour : MonoBehaviour
 
     void attack()
     {
-        if (anim.IsPlaying("attack") && !impacted)
-        //если анимация attack проигрывается И impacted = false;, то выполняется тело
+        if (anim.IsPlaying("Attack") && !impacted)
+        //если анимация Attack проигрывается И impacted = false;, то выполняется тело
         {
-            if (anim["attack"].time > anim["attack"].length * impactTime && anim["attack"].time < anim["attack"].length * 0.9)
+            if (anim["Attack"].time > anim["Attack"].length * impactTime && anim["Attack"].time < anim["Attack"].length * 0.9)
             // если время атаки больше, чем продолжительность атаки (100%) * импактТайм(время атаки) (0.33) 
             // И время атаки меньше, чем 90% продолжительности атаки 
             {
                 opponent.getHit(damage);
                 // у opponent вызываем метод getHit и передаем ему damage
                 impacted = true;
-                //если не поставить (impacted = true;) - то метод attack() будет 
+                //если не поставить (impacted = true;) - то метод Attack() будет 
                 //вызываться каждый кадр (в Update())
 
             }
@@ -171,16 +170,16 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void chase()
     {
-        //Quaternion newRotation = Quaternion.LookRotation(transform.position - player.position);
+        //Quaternion newRotation = Quaternion.LookRotation(transform._position - player._position);
         //transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 10 * Time.deltaTime);
         transform.LookAt(player.position);
         controller.SimpleMove(transform.forward * speed);
-        anim.CrossFade("run");
+        anim.CrossFade("Run");
     }
 
     void OnMouseOver()
     {
-        player.GetComponent<Fighter>().opponent = this.gameObject;
+        player.GetComponent<Fighter>().Opponent = this.gameObject;
         //Debug.Log("Opponent = Enemy");
     }
 

@@ -1,49 +1,39 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-
 using UnityEngine;
 
 
 public class Fighter : MonoBehaviour
 {
-    public GameObject opponent;
-    private Animation anim;
-    public int damage;
-    public double impactTime;
-    private bool impacted;
-    public float range;
-    public int health;
+    public GameObject Opponent; 
+    public int Rename;
+    public double ImpactTime;
+    public float Range;
+    public int Health;
+    public bool InAction;
+    public int MaxHealth;
+    public float CombatEscapeTime;
+    public float CountDown;
+    public bool SpecialAttack;
 
-    public bool inAction;
-
-    bool starterd;
-    bool ended;
-
-    public int maxHealth;
-
-    public float combatEscapeTime;
-
-    public float countDown;
-    //когда ударим врага, пойдет отсчет 
-    //когда дойдет до 0, выйдем из комбат
-
-    public bool specialAttack;
+    private Animation _animation;
+    private bool _impacted;
+    private bool _starterd;
+    private bool _ended;
+ 
     void Start()
     {
-        health = maxHealth;
-        anim = GetComponent<Animation>();
+        Health = MaxHealth;
+        _animation = GetComponent<Animation>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space) && !specialAttack)
+        if (Input.GetKey(KeyCode.Space) && !SpecialAttack)
         {
-            inAction = true;
+            InAction = true;
         }
-        if (inAction)
+        if (InAction)
         {
             if (attackFunction(0, 1, KeyCode.Space, null, 0, true))
             {
@@ -52,7 +42,7 @@ public class Fighter : MonoBehaviour
             }
             else
             {
-                inAction = false;
+                InAction = false;
             }
         }
         die();
@@ -68,11 +58,11 @@ public class Fighter : MonoBehaviour
             {
                 if (Input.GetKey(key) && inRange())
                 {
-                    anim.Play("attack");
-                    ClickToMove.attack = true;
-                    if (opponent != null)
+                    _animation.Play("Attack");
+                    ClickToMove.Attack = true;
+                    if (Opponent != null)
                     {
-                        transform.LookAt(opponent.transform.position);
+                        transform.LookAt(Opponent.transform.position);
                     }
                 }
             }
@@ -81,21 +71,21 @@ public class Fighter : MonoBehaviour
                 //если врага нет, то и условие inRange() не нужно
                 if (Input.GetKey(key))
                 {
-                    anim.Play("attack");
-                    ClickToMove.attack = true;
+                    _animation.Play("Attack");
+                    ClickToMove.Attack = true;
 
-                        transform.LookAt(ClickToMove.cursorPosition);
+                        transform.LookAt(ClickToMove.CursorPosition);
                 }
             }
         }
 
-        if (anim["attack"].time > 0.9 * anim["attack"].length)
+        if (_animation["Attack"].time > 0.9 * _animation["Attack"].length)
         {
-            ClickToMove.attack = false; // для того, что бы после удара можно было управлять персонажем дальше
-            impacted = false;
-            if (specialAttack)
+            ClickToMove.Attack = false; // для того, что бы после удара можно было управлять персонажем дальше
+            _impacted = false;
+            if (SpecialAttack)
             {
-                specialAttack = false;
+                SpecialAttack = false;
             }
             //если этого блока не будет, то после того, как нажмем 1 для оглушения, то 
             //потом не сможем использовать простую атаку
@@ -110,24 +100,24 @@ public class Fighter : MonoBehaviour
 
     public void resetAttackFunction()
     {
-        ClickToMove.attack = false;
-        impacted = false;
-        anim.Stop("attack");
+        ClickToMove.Attack = false;
+        _impacted = false;
+        _animation.Stop("Attack");
 
     }
 
     void impact(int stunSecond, double scaleDamage, GameObject particleEffects, int projectile, bool opponentBased)
     {
-        if ((!opponentBased || opponent != null) && anim.IsPlaying("attack") && !impacted)
+        if ((!opponentBased || Opponent != null) && _animation.IsPlaying("Attack") && !_impacted)
         {
-            if ((anim["attack"].time > anim["attack"].length * impactTime) && (anim["attack"].time < anim["attack"].length * 0.9))
+            if ((_animation["Attack"].time > _animation["Attack"].length * ImpactTime) && (_animation["Attack"].time < _animation["Attack"].length * 0.9))
             {
                 {
-                    countDown = combatEscapeTime;
+                    CountDown = CombatEscapeTime;
                     CancelInvoke("combatEscapeCountDown");
                     InvokeRepeating("combatEscapeCountDown", 0, 1);
-                    opponent.GetComponent<EnemyBehaviour>().GetHit(damage * (int)scaleDamage);
-                    opponent.GetComponent<EnemyBehaviour>().getStun(stunSecond);
+                    Opponent.GetComponent<EnemyBehaviour>().GetHit(Rename * (int)scaleDamage);
+                    Opponent.GetComponent<EnemyBehaviour>().getStun(stunSecond);
                     Quaternion rot = transform.rotation;
                     rot.x = 0;
                     rot.z = 0;
@@ -136,12 +126,12 @@ public class Fighter : MonoBehaviour
                         //project projectiles
                         Instantiate(Resources.Load("Projectile"), new Vector3(transform.position.x, transform.position.y * 2.5f, transform.position.z), rot);
                     }
-                    //Instantiate(Resources.Load("attackOne"), opponent.transform.position, Quaternion.identity);
+                    //Instantiate(Resources.Load("attackOne"), opponent.transform._position, Quaternion.identity);
                     if (particleEffects != null)
                     {
-                        Instantiate(particleEffects, new Vector3(opponent.transform.position.x, opponent.transform.position.y * 2.5f, opponent.transform.position.z), Quaternion.identity);
+                        Instantiate(particleEffects, new Vector3(Opponent.transform.position.x, Opponent.transform.position.y * 2.5f, Opponent.transform.position.z), Quaternion.identity);
                     } 
-                    impacted = true;
+                    _impacted = true;
                 }
             }
         }
@@ -149,8 +139,8 @@ public class Fighter : MonoBehaviour
 
     void combatEscapeCountDown()
     {
-        countDown = countDown - 1;
-        if (countDown == 0)
+        CountDown = CountDown - 1;
+        if (CountDown == 0)
         {
             CancelInvoke("combatEscapeCountDown");
             //перестает вызывать метод 
@@ -159,7 +149,7 @@ public class Fighter : MonoBehaviour
 
     bool inRange()
     {
-        if (opponent != null & Vector3.Distance(transform.position, opponent.transform.position) <= range)
+        if (Opponent != null & Vector3.Distance(transform.position, Opponent.transform.position) <= Range)
         {
             return true;
         }
@@ -171,33 +161,32 @@ public class Fighter : MonoBehaviour
 
     public void getHit(int damage)
     {
-        health = health - damage;
-        if (health < 0)
+        Health = Health - damage;
+        if (Health < 0)
         {
-            health = 0;
+            Health = 0;
         }
         //если не добавить блок с if, то здоровье будет уменьшаться дальше ( в минус)
 
     }
     public bool isDead()
     {
-        return (health <= 0);
+        return (Health <= 0);
     }
     void die()
     {
-        if (isDead() && !ended)
+        if (isDead() && !_ended)
         // если у Игрока закончилось здоровье
         {
-            if (!starterd)
+            if (!_starterd)
             {
-                anim.Play("die");
+                _animation.Play("die");
 
-                starterd = true;
+                _starterd = true;
             }
-            if (starterd && anim.IsPlaying("die"))
+            if (_starterd && _animation.IsPlaying("die"))
             {
-                Debug.Log("Dead");
-                ended = true;
+                _ended = true;
             }
         }
     }

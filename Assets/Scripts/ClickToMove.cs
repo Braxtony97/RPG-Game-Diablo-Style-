@@ -4,61 +4,63 @@ using UnityEngine;
 
 public class ClickToMove : MonoBehaviour
 {
-    private Vector3 position;
-    public float speed;
-    public CharacterController controller;
-    public AnimationClip run;
-    public AnimationClip idle;
-    private Animation anim;
-    public LayerMask layerWithoutEnemy;
-    public static bool attack;
-    public Collider cold;
-    public EnemyBehaviour enemy;
+    
+    public float Speed;
+    public CharacterController Controller;
+    public AnimationClip Run;
+    public AnimationClip Idle;
+    public LayerMask LayerWithoutEnemy;
+    public static bool Attack;
+    public Collider Cold;
+    public EnemyBehaviour Enemy;
+    public static Vector3 CursorPosition;
+    public static Vector3 CurrentPosition;
+    public GetMousePosition getMousePosition;
 
-    public static Vector3 cursorPosition;
-    //содержит позицию курсора
+    private Vector3 _position;
+    private Animation _animation;
 
-    public static Vector3 currentPosition;
-
-    //public GameObject NPC;
-
-
-    void Start()
+    private void Awake()
     {
-        transform.position = DataBase.readPlayerPosition();
-        anim = GetComponent<Animation>();
-        LayerMask NotMask = ~ layerWithoutEnemy;
-        cold = GetComponent<Collider>();
-
-
+        _animation = GetComponent<Animation>();
+        Cold = GetComponent<Collider>();
+        
+    }
+    private void Start()
+    {
+        transform.position = DataBase.readPlayerPosition();  
+        LayerMask NotMask = ~ LayerWithoutEnemy;
+        getMousePosition = new GetMousePosition();
+        
     }
 
     void Update ()
     {
-        locateCursor();
-        //Debug.Log(attack);
-        if (!attack)
+        //locateCursor();
+        //Debug.Log(Attack);
+        if (!Attack)
         {
             if (Input.GetMouseButton(0))
             {
-                locatePosition();
+                //locatePosition();
+                //_position = getMousePosition.MousePosition();
                 moveToPosition();
             }
             else
             {
-                anim.CrossFade(idle.name);
+                _animation.CrossFade(Idle.name);
             }
         }
         else
         {
 
         }
-        currentPosition = transform.position;
+        CurrentPosition = transform.position;
         
 
     }
 
-    void locatePosition()
+    /*void locatePosition()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -67,37 +69,37 @@ public class ClickToMove : MonoBehaviour
         {
             if (hit.collider.tag != "Player" && hit.collider.tag != "Enemy")  
                     { 
-            position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
+            _position = new Vector3(hit.point.x, hit.point.y, hit.point.z);
                     }
             if (hit.collider.tag =="Enemy")
             {
-                transform.LookAt(enemy.transform.position);
+                transform.LookAt(Enemy.transform.position);
             }
         }
-    }
+    }*/
 
-    void locateCursor()
+    /*void locateCursor()
     {
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            cursorPosition = hit.point;
-        }
-    }
+            CursorPosition = hit.point;
+        } 
+    }*/
 
     void moveToPosition() {
-        if (Vector3.Distance(transform.position, position) > 0.5) { 
-            Quaternion newRotation = Quaternion.LookRotation(position - transform.position); // высчитали новый угол
+        if (Vector3.Distance(transform.position, _position) > 0.5) { 
+            Quaternion newRotation = Quaternion.LookRotation(_position - transform.position); // высчитали новый угол
             newRotation.x = 0f;
             newRotation.z = 0f;
             transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, Time.deltaTime * 10); //transform.rotation - текущий поворт.
             //поворачиваем игрока
-            controller.SimpleMove(transform.forward * speed);
+            Controller.SimpleMove(transform.forward * Speed);
 
-            //anim.CrossFade(run.name);
-            anim.CrossFade("run");
+            //_animation.CrossFade(Run.name);
+            _animation.CrossFade(Run.name);
         }
         
     }

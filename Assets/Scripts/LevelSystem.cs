@@ -35,9 +35,9 @@ public class LevelSystem : MonoBehaviour
     void levelEffect()
     {
 
-            player.damage = player.damage + 4;
-            player.maxHealth = player.maxHealth + 20;
-            player.health = player.maxHealth;
+            player.Rename = player.Rename + 4;
+            player.MaxHealth = player.MaxHealth + 20;
+            player.Health = player.MaxHealth;
          
     }
 }

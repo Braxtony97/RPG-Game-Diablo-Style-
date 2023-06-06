@@ -25,12 +25,12 @@ public class SpecialAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(key) && !player.specialAttack)
+        if (Input.GetKeyDown(key) && !player.SpecialAttack)
         /*если много раз нажимать 1 - то player будет начинать атаку снова
         поэтому в условие добавляем !player.specialAttack */
         {
             player.resetAttackFunction();
-            player.specialAttack = true;
+            player.SpecialAttack = true;
             inAction = true;
             //не вызовется атака простая
 

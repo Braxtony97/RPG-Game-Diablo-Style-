@@ -12,6 +12,7 @@ public class Attack : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
+            Debug.Log("Атака");
             Animation.Play("attack");
         }
     }

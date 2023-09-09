@@ -59,6 +59,7 @@
     <Compile Include="Assets\Scripts\LevelSystem.cs" />
     <Compile Include="Assets\Shoot.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightIntensityFade.cs" />
+    <Compile Include="Assets\GetAnimation.cs" />
     <Compile Include="Assets\Scripts\PlayerNavMesh.cs" />
     <Compile Include="Assets\Movement.cs" />
     <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />

@@ -690,7 +690,8 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11100006, guid: a2cb09cf998faef4fb7887e15c3608c1, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: a2cb09cf998faef4fb7887e15c3608c1, type: 3}
 --- !u!1 &376014147 stripped
 GameObject:
@@ -1718,7 +1719,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _navMeshAgent: {fileID: 1864817232}
   _mousePosition: {fileID: 158706267}
-  _animation: {fileID: 1864817238}
   _animator: {fileID: 1864817239}
 --- !u!195 &1864817232
 NavMeshAgent:
@@ -1742,11 +1742,6 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
---- !u!111 &1864817238 stripped
-Animation:
-  m_CorrespondingSourceObject: {fileID: 11100006, guid: a2cb09cf998faef4fb7887e15c3608c1, type: 3}
-  m_PrefabInstance: {fileID: 376014146}
-  m_PrefabAsset: {fileID: 0}
 --- !u!95 &1864817239
 Animator:
   serializedVersion: 4
@@ -1792,7 +1787,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058627878}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac73153e1ad68c74f8ad73e50202a565, type: 3}
   m_Name: 
@@ -1840,7 +1835,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2058627878}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9147d71392af7d64a90b4ea8a7c15174, type: 3}
   m_Name: 

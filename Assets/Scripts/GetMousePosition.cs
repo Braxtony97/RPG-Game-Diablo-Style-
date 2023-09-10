@@ -12,7 +12,7 @@ public class GetMousePosition : MonoBehaviour
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out hit, 1000))
         {
-            //MousePositionTransform = (hit.point.x, hit.point.y, hit.point.z); 
+            //MousePositionTransform.position = new Vector3 (hit.point.x, hit.point.y, hit.point.z); 
             MousePositionVector = hit.point;
         }
         

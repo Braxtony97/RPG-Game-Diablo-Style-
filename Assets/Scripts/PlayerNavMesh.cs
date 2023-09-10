@@ -17,17 +17,42 @@ public class PlayerNavMesh : MonoBehaviour
 
     private void Update()
     {
+        //_animator.SetBool("IsWalking", false);
+
         if (Input.GetMouseButton(0))
         {
             _mousePosition.MousePosition();
             _navMeshAgent.destination = _mousePosition.MousePositionVector;
-            //_animator.SetBool("IsWalking", true);
-            /*if (_navMeshAgent.pathStatus == NavMeshPathStatus.PathComplete)
+
+            if (!HasReachedDestination())
             {
+                _animator.SetBool("IsWalking", true);
                 //_animation.Play("run");
                 Debug.Log("Достиг");
-            }*/
+            }
 
+        }
+    }
+
+    private bool HasReachedDestination()
+    {
+        NavMeshPath path = new NavMeshPath();
+        bool hasPath = _navMeshAgent.CalculatePath(_mousePosition.MousePositionVector, path);
+        if (hasPath)
+        {
+            if (path.corners.Length > 1)
+            {
+                return false; // Player is still moving towards the destination
+            }
+            else
+            {
+                return true; // Player has reached the destination
+            }
+        }
+        else
+        {
+            Debug.Log("No path found");
+            return false; // No path found
         }
     }
 }

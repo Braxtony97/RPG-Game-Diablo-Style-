@@ -5,14 +5,11 @@ public class PlayerNavMesh : MonoBehaviour
 {
     [SerializeField] private NavMeshAgent _navMeshAgent;
     [SerializeField] private GetMousePosition _mousePosition;
-    [SerializeField] private Animation _animation;
     [SerializeField] private Animator _animator;
-    private Transform _transformPlayer;
 
     private void Awake()
     {
-        _transformPlayer = GetComponent<Transform>();
-        //_navMeshAgent.stoppingDistance = 1.0f;
+        _navMeshAgent.stoppingDistance = 0.5f;
     }
 
     private void Update()
@@ -23,6 +20,7 @@ public class PlayerNavMesh : MonoBehaviour
         {
             _mousePosition.MousePosition();
             _navMeshAgent.destination = _mousePosition.MousePositionVector;
+<<<<<<< HEAD
 
             if (!HasReachedDestination())
             {
@@ -53,7 +51,21 @@ public class PlayerNavMesh : MonoBehaviour
         {
             Debug.Log("No path found");
             return false; // No path found
+=======
+>>>>>>> PlayerMove
         }
+
+        IsWalking();
+
+        
+    }
+
+    private void IsWalking ()
+    {
+        if (_navMeshAgent.remainingDistance <= _navMeshAgent.stoppingDistance && !_navMeshAgent.pathPending)
+            _animator.SetBool("IsWalking", false);
+        else
+            _animator.SetBool("IsWalking", true);
     }
 }
 

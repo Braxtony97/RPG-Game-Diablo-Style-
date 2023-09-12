@@ -1,21 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CameraBehaviour : MonoBehaviour
 {
-    public Transform player;
-    public Vector3 camOffset;
+    [SerializeField] private Transform _playerTransform;
+
+    private Vector3 _offset;
     void Start()
     {
-        //camOffset = transform._position - player.transform._position;
+        _offset = transform.position - _playerTransform.transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        //transform._position = player.TransformPoint(camOffset);
-        //transform.LookAt(player);
-        transform.position = camOffset + player.transform.position;
+        transform.position = _offset + _playerTransform.transform.position;
     }
 }

@@ -111,7 +111,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
 
     public void getStun(int seconds)
-    //в метод будет передавать время оглушения (у player в скрипте
+    //в метод будет передавать время оглушения (у _playerTransform в скрипте
     //fighter будем вызывать этот метод
     {
         CancelInvoke("stunCountDown");
@@ -170,7 +170,7 @@ public class EnemyBehaviour : MonoBehaviour
     }
     void chase()
     {
-        //Quaternion newRotation = Quaternion.LookRotation(transform._position - player._position);
+        //Quaternion newRotation = Quaternion.LookRotation(transform._position - _playerTransform._position);
         //transform.rotation = Quaternion.Slerp(transform.rotation, newRotation, 10 * Time.deltaTime);
         transform.LookAt(player.position);
         controller.SimpleMove(transform.forward * speed);

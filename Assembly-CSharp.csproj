@@ -57,18 +57,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\Scripts\LevelSystem.cs" />
-    <Compile Include="Assets\Shoot.cs" />
+    <Compile Include="Assets\Scripts\Shoot.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_LightIntensityFade.cs" />
-    <Compile Include="Assets\GetAnimation.cs" />
+    <Compile Include="Assets\Scripts\GetAnimation.cs" />
     <Compile Include="Assets\Scripts\PlayerNavMesh.cs" />
-    <Compile Include="Assets\Movement.cs" />
+    <Compile Include="Assets\Scripts\Movement.cs" />
     <Compile Include="Assets\Scripts\EnemyBehaviour.cs" />
     <Compile Include="Assets\Scripts\SpecialAttack.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoRotate.cs" />
     <Compile Include="Assets\Scripts\PlayAnimation.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_AutoStopLoopedEffect.cs" />
     <Compile Include="Assets\Scripts\ActionBar.cs" />
-    <Compile Include="Assets\Pool.cs" />
+    <Compile Include="Assets\Scripts\Pool.cs" />
     <Compile Include="Assets\Scripts\Player.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDir.cs" />
     <Compile Include="Assets\Scripts\SkillSlot.cs" />
@@ -77,7 +77,7 @@
     <Compile Include="Assets\Scripts\EnemyHealth.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Scripts\CFX_AutoDestructShuriken.cs" />
     <Compile Include="Assets\Scripts\Character.cs" />
-    <Compile Include="Assets\PoolMember.cs" />
+    <Compile Include="Assets\Scripts\PoolMember.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RotateCamera.cs" />
     <Compile Include="Assets\JMO Assets\Cartoon FX (legacy)\Demo\Assets\CFX_Demo_RandomDirectionTranslate.cs" />
     <Compile Include="Assets\LevelDesign 1\Assets\L_FG_Assets_Pack_Lite\Demo\cameraMove.cs" />

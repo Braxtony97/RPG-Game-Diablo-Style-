@@ -26,8 +26,8 @@ public class SpecialAttack : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(key) && !player.SpecialAttack)
-        /*если много раз нажимать 1 - то player будет начинать атаку снова
-        поэтому в условие добавляем !player.specialAttack */
+        /*если много раз нажимать 1 - то _playerTransform будет начинать атаку снова
+        поэтому в условие добавляем !_playerTransform.specialAttack */
         {
             player.resetAttackFunction();
             player.SpecialAttack = true;
@@ -44,7 +44,7 @@ public class SpecialAttack : MonoBehaviour
             else
             {
                 inAction = false;
-                //если player.attackFunction(stunTime, damagePercentage, key завершилась (в блоке завершения атаки) = false
+                //если _playerTransform.attackFunction(stunTime, damagePercentage, key завершилась (в блоке завершения атаки) = false
                 //то и тут inAction = false (что бы не вызывалась специальная атака снова (пока сами не вызовем))
             }
         }

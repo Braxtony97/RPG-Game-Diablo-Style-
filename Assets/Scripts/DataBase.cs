@@ -29,9 +29,9 @@ public class DataBase : MonoBehaviour
     void savePlayerPosition()
     //записываем данные 
     {
-        PlayerPrefs.SetFloat("x", ClickToMove.CurrentPosition.x);
-        PlayerPrefs.SetFloat("y", ClickToMove.CurrentPosition.y);
-        PlayerPrefs.SetFloat("z", ClickToMove.CurrentPosition.z);
+        //PlayerPrefs.SetFloat("x", ClickToMove.CurrentPosition.x);
+        //PlayerPrefs.SetFloat("y", ClickToMove.CurrentPosition.y);
+        //PlayerPrefs.SetFloat("z", ClickToMove.CurrentPosition.z);
     }
 
      public static Vector3 readPlayerPosition()

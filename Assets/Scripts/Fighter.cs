@@ -59,7 +59,7 @@ public class Fighter : MonoBehaviour
                 if (Input.GetKey(key) && inRange())
                 {
                     _animation.Play("Attack");
-                    ClickToMove.Attack = true;
+                    //ClickToMove.Attack = true;
                     if (Opponent != null)
                     {
                         transform.LookAt(Opponent.transform.position);
@@ -72,16 +72,16 @@ public class Fighter : MonoBehaviour
                 if (Input.GetKey(key))
                 {
                     _animation.Play("Attack");
-                    ClickToMove.Attack = true;
+                    //ClickToMove.Attack = true;
 
-                        transform.LookAt(ClickToMove.CursorPosition);
+                       // transform.LookAt(ClickToMove.CursorPosition);
                 }
             }
         }
 
         if (_animation["Attack"].time > 0.9 * _animation["Attack"].length)
         {
-            ClickToMove.Attack = false; // для того, что бы после удара можно было управлять персонажем дальше
+            //ClickToMove.Attack = false; // для того, что бы после удара можно было управлять персонажем дальше
             _impacted = false;
             if (SpecialAttack)
             {
@@ -100,7 +100,7 @@ public class Fighter : MonoBehaviour
 
     public void resetAttackFunction()
     {
-        ClickToMove.Attack = false;
+        //ClickToMove.Attack = false;
         _impacted = false;
         _animation.Stop("Attack");
 

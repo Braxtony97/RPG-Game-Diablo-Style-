@@ -16,8 +16,6 @@ public class PlayerAttack : MonoBehaviour, IAttack
         {
             _animator.SetBool(_attackParameterAnimator, false);
         }
-        
     }
-
 }
 

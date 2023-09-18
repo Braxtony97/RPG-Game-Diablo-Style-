@@ -302,7 +302,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 400010}
-  - component: {fileID: 11100004}
   m_Layer: 0
   m_Name: skeletonFresh
   m_TagString: Untagged
@@ -327,28 +326,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!111 &11100004
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100010}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 7400002, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
-  m_Animations:
-  - {fileID: 7400002, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
-  - {fileID: 7400004, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
-  - {fileID: 7400006, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
-  - {fileID: 7400008, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
-  - {fileID: 7400010, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
-  - {fileID: 7400012, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
-  - {fileID: 7400014, guid: 86c591ebd74142c4d93243d9fa9544da, type: 3}
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0
 --- !u!1 &100012
 GameObject:
   m_ObjectHideFlags: 0
